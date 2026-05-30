@@ -11,8 +11,10 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     layout: (name) => {
+        const publicPages = ['welcome', 'Home', 'About', 'Fruits', 'Farmhouse', 'Contact'];
+
         switch (true) {
-            case name === 'welcome':
+            case publicPages.includes(name):
                 return null;
             case name.startsWith('auth/'):
                 return AuthLayout;

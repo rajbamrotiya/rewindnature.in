@@ -3,7 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="description" content="Rewind Nature Farm in Gir, Gujarat. Experience pristine farmhouse retreats and premium organic Kesar mangoes and fresh fruits from our sun-kissed orchards.">
+        <meta name="keywords" content="Rewind Nature Farm, Gir, Gujarat, Kesar Mangoes, Farmhouse Retreat, Organic Fruits, Nature Stay, Gir National Park, Desi Mango">
+        <meta name="author" content="Rewind Nature Farm">
         {{-- Inline script to detect system dark mode preference and apply it immediately --}}
         <script>
             (function() {
@@ -30,9 +32,8 @@
             }
         </style>
 
-        <link rel="icon" href="/favicon.ico" sizes="any">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="icon" href="/Favicon.png" type="image/png">
+        <link rel="apple-touch-icon" href="/Favicon.png">
 
         @fonts
 
