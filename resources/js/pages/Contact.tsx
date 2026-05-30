@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { MapPin, Send, Clock, Leaf } from 'lucide-react'
+import { MapPin, Send, Clock, Leaf, Mail } from 'lucide-react'
 import { useState } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -207,6 +207,20 @@ export default function Contact() {
                       <h4 className="font-semibold text-stone-50 text-lg">Mango Season</h4>
                       <p className="mt-1 text-sm leading-relaxed text-emerald-100">
                         April - September (Peak harvest)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-800 text-orange-400 shadow-inner">
+                      <Mail className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-stone-50 text-lg">Email Us</h4>
+                      <p className="mt-1 text-sm leading-relaxed text-emerald-100">
+                        <a href="mailto:info@rewindnature.in" className="transition-colors hover:text-orange-400">
+                          info@rewindnature.in
+                        </a>
                       </p>
                     </div>
                   </div>

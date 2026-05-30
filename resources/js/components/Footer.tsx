@@ -1,6 +1,6 @@
 import { Link } from '@inertiajs/react'
 import { motion } from 'framer-motion'
-import { MapPin, Facebook, Instagram, Twitter } from 'lucide-react'
+import { MapPin, Facebook, Instagram, Twitter, Mail } from 'lucide-react'
 
 export default function Footer() {
   const footerLinks = [
@@ -99,6 +99,14 @@ export default function Footer() {
                   <MapPin className="h-4 w-4" />
                 </div>
                 <span className="mt-1 font-medium leading-tight">Behind Nature Study Camp road Sasan - Talala Road, Chitravad, Talala, Gujarat 362150</span>
+              </li>
+              <li className="flex items-start gap-3 group">
+                <a href="mailto:info@rewindnature.in" className="flex items-start gap-3 group">
+                  <div className="rounded-full bg-emerald-100 p-2 text-emerald-700 transition-colors group-hover:bg-emerald-200">
+                    <Mail className="h-4 w-4" />
+                  </div>
+                  <span className="mt-1 font-medium leading-tight transition-colors hover:text-orange-600">info@rewindnature.in</span>
+                </a>
               </li>
             </ul>
           </motion.div>
