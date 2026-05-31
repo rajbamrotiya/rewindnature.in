@@ -6,6 +6,20 @@
         <meta name="description" content="Rewind Nature Farm in Gir, Gujarat. Experience pristine farmhouse retreats and premium organic Kesar mangoes and fresh fruits from our sun-kissed orchards.">
         <meta name="keywords" content="Rewind Nature Farm, Gir, Gujarat, Kesar Mangoes, Farmhouse Retreat, Organic Fruits, Nature Stay, Gir National Park, Desi Mango">
         <meta name="author" content="Rewind Nature Farm">
+
+        <!-- Open Graph / Facebook Social Sharing Previews -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ url()->current() }}">
+        <meta property="og:title" content="Rewind Nature Farm | Gir Forest Farmhouse & Organic Fruits">
+        <meta property="og:description" content="Experience pristine farmhouse retreats and premium organic Kesar mangoes and fresh fruits from our sun-kissed orchards in Gir, Gujarat.">
+        <meta property="og:image" content="{{ url('/Logo.png') }}">
+
+        <!-- Twitter Card Sharing Previews -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="{{ url()->current() }}">
+        <meta property="twitter:title" content="Rewind Nature Farm | Gir Forest Farmhouse & Organic Fruits">
+        <meta property="twitter:description" content="Experience pristine farmhouse retreats and premium organic Kesar mangoes and fresh fruits from our sun-kissed orchards in Gir, Gujarat.">
+        <meta property="twitter:image" content="{{ url('/Logo.png') }}">
         {{-- Inline script to detect system dark mode preference and apply it immediately --}}
         <script>
             (function() {
@@ -40,7 +54,7 @@
         @viteReactRefresh
         @vite(['resources/css/app.css', 'resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
         <x-inertia::head>
-            <title>{{ config('app.name', 'Laravel') }}</title>
+            <title>{{ config('app.name') === 'Laravel' ? 'Rewind Nature Farm' : config('app.name', 'Rewind Nature Farm') }}</title>
         </x-inertia::head>
     </head>
     <body class="font-sans antialiased">
