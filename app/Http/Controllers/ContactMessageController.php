@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContactMessage;
+use App\Services\WhatsAppNotificationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -32,7 +33,9 @@ class ContactMessageController extends Controller
             'message' => 'required|string|max:10000',
         ]);
 
-        ContactMessage::create($validated);
+        $message = ContactMessage::create($validated);
+
+        WhatsAppNotificationService::send($message);
 
         return back()->with('success', 'Thank you! Your message has been sent successfully.');
     }

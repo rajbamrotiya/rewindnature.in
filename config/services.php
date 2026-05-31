@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'whatsapp' => [
+        'enabled' => env('WHATSAPP_NOTIFICATION_ENABLED', false),
+        'phone' => env('WHATSAPP_PHONE'),
+        'api_key' => env('WHATSAPP_API_KEY'),
+    ],
+
 ];
