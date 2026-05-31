@@ -3,10 +3,11 @@ import { MapPin, Send, Clock, Leaf, Mail } from 'lucide-react'
 import { useState } from 'react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import { Head } from '@inertiajs/react'
+import { Head, useForm } from '@inertiajs/react'
+import { store } from '@/routes/contact'
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
+  const { data, setData, post, processing, errors, reset } = useForm({
     name: '',
     email: '',
     subject: '',
@@ -15,19 +16,20 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
+    setData(e.target.name as any, e.target.value)
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => {
-      setFormData({ name: '', email: '', subject: '', message: '' })
-      setSubmitted(false)
-    }, 3000)
+    post(store().url, {
+      onSuccess: () => {
+        reset()
+        setSubmitted(true)
+        setTimeout(() => {
+          setSubmitted(false)
+        }, 4000)
+      },
+    })
   }
 
   return (
@@ -87,12 +89,13 @@ export default function Contact() {
                       type="text"
                       name="name"
                       id="name"
-                      value={formData.name}
+                      value={data.name}
                       onChange={handleChange}
                       className="w-full rounded-xl border-0 bg-stone-100 px-5 py-4 text-emerald-950 transition-all focus:bg-white focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-inner"
                       placeholder="John Doe"
                       required
                     />
+                    {errors.name && <p className="mt-1 text-xs text-red-600 font-semibold">{errors.name}</p>}
                   </div>
                   <div>
                     <label className="mb-2 block text-sm font-semibold text-emerald-950">
@@ -102,12 +105,13 @@ export default function Contact() {
                       type="email"
                       name="email"
                       id="email"
-                      value={formData.email}
+                      value={data.email}
                       onChange={handleChange}
                       className="w-full rounded-xl border-0 bg-stone-100 px-5 py-4 text-emerald-950 transition-all focus:bg-white focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-inner"
                       placeholder="john@example.com"
                       required
                     />
+                    {errors.email && <p className="mt-1 text-xs text-red-600 font-semibold">{errors.email}</p>}
                   </div>
                 </div>
 
@@ -119,12 +123,13 @@ export default function Contact() {
                     type="text"
                     name="subject"
                     id="subject"
-                    value={formData.subject}
+                    value={data.subject}
                     onChange={handleChange}
                     className="w-full rounded-xl border-0 bg-stone-100 px-5 py-4 text-emerald-950 transition-all focus:bg-white focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-inner"
                     placeholder="How can we help?"
                     required
                   />
+                  {errors.subject && <p className="mt-1 text-xs text-red-600 font-semibold">{errors.subject}</p>}
                 </div>
 
                 <div>
@@ -134,22 +139,24 @@ export default function Contact() {
                   <textarea
                     name="message"
                     id="message"
-                    value={formData.message}
+                    value={data.message}
                     onChange={handleChange}
                     rows={5}
                     className="w-full resize-none rounded-xl border-0 bg-stone-100 px-5 py-4 text-emerald-950 transition-all focus:bg-white focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-inner"
                     placeholder="Tell us more about your inquiry..."
                     required
                   />
+                  {errors.message && <p className="mt-1 text-xs text-red-600 font-semibold">{errors.message}</p>}
                 </div>
 
                 <motion.button
                   type="submit"
+                  disabled={processing}
                   className={`group relative mt-4 flex w-full items-center justify-center gap-2 overflow-hidden rounded-full px-8 py-4 font-semibold text-white transition-all sm:w-auto shadow-lg ${
                     submitted ? 'bg-green-500 hover:bg-green-600 shadow-green-500/30' : 'bg-orange-500 hover:bg-orange-600 shadow-orange-500/30'
-                  }`}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  } ${processing ? 'opacity-70 cursor-not-allowed' : ''}`}
+                  whileHover={processing ? {} : { scale: 1.02 }}
+                  whileTap={processing ? {} : { scale: 0.98 }}
                 >
                   {submitted ? (
                     <span className="flex items-center gap-2">
@@ -157,7 +164,7 @@ export default function Contact() {
                     </span>
                   ) : (
                     <>
-                      <span>Send Message</span>
+                      <span>{processing ? 'Sending...' : 'Send Message'}</span>
                       <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </>
                   )}
