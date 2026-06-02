@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessageMail;
 use App\Models\ContactMessage;
 use App\Services\WhatsAppNotificationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -36,6 +38,8 @@ class ContactMessageController extends Controller
         $message = ContactMessage::create($validated);
 
         WhatsAppNotificationService::send($message);
+
+        Mail::to('rajbamrotiya@yahoo.com')->send(new ContactMessageMail($message));
 
         return back()->with('success', 'Thank you! Your message has been sent successfully.');
     }
