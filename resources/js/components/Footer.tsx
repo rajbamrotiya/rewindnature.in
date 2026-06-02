@@ -161,9 +161,22 @@ export default function Footer() {
           <p className="font-medium">
             © {new Date().getFullYear()} Rewind Nature Farm. All rights reserved.
           </p>
-          <p className="flex items-center gap-1 font-medium">
-            Cultivated with <span className="text-orange-500 animate-pulse">♥</span> for nature
-          </p>
+          <div className="flex flex-col items-center gap-1 md:items-end">
+            <p className="flex items-center gap-1 font-medium">
+              Cultivated with <span className="text-orange-500 animate-pulse">♥</span> for nature
+            </p>
+            <p className="text-xs font-medium">
+              Developed by{' '}
+              <a
+                href="https://tech.rewindnature.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-700 transition-colors hover:text-orange-600 font-semibold"
+              >
+                Rewind Nature Tech
+              </a>
+            </p>
+          </div>
         </motion.div>
       </div>
     </footer>
