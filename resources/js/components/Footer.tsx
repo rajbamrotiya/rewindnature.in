@@ -1,8 +1,11 @@
-import { Link } from '@inertiajs/react'
+import { Link, usePage } from '@inertiajs/react'
 import { motion } from 'framer-motion'
 import { MapPin, Facebook, Instagram, Twitter, Mail } from 'lucide-react'
+import WhatsAppWidget from '@/components/WhatsAppWidget'
 
 export default function Footer() {
+  const { totalVisitors } = usePage().props as { totalVisitors?: number };
+
   const footerLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
@@ -165,6 +168,11 @@ export default function Footer() {
             <p className="flex items-center gap-1 font-medium">
               Cultivated with <span className="text-orange-500 animate-pulse">♥</span> for nature
             </p>
+            {totalVisitors !== undefined && (
+               <p className="text-xs font-medium text-emerald-700 bg-emerald-100 px-3 py-1 mt-1 mb-1 rounded-full shadow-inner">
+                 Total Visitors: {totalVisitors}
+               </p>
+            )}
             <p className="text-xs font-medium">
               Developed by{' '}
               <a
@@ -179,6 +187,9 @@ export default function Footer() {
           </div>
         </motion.div>
       </div>
+      
+      {/* WhatsApp Floating Widget */}
+      <WhatsAppWidget />
     </footer>
   )
 }

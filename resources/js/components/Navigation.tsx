@@ -19,8 +19,8 @@ export default function Navigation() {
         { name: 'Home', href: '/' },
         { name: 'About', href: '/about' },
         { name: 'Fruits', href: '/fruits' },
-        { name: 'Farmhouse', href: '/farmhouse' },
         { name: 'Contact', href: '/contact' },
+        { name: 'Schedule', href: '/schedule' },
     ];
 
     return (

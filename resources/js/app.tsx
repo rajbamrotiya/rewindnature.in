@@ -12,7 +12,7 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     layout: (name) => {
-        const publicPages = ['welcome', 'Home', 'About', 'Fruits', 'Farmhouse', 'Contact'];
+        const publicPages = ['welcome', 'Home', 'About', 'Fruits', 'Farmhouse', 'Contact', 'Schedule'];
 
         switch (true) {
             case publicPages.includes(name):

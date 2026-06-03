@@ -34,7 +34,7 @@ export default function Farmhouse() {
     {
       id: 3,
       name: 'Nature Retreat',
-      image: 'https://images.unsplash.com/photo-1584622181563-430f63602d4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',
+      image: '/farm.jpeg',
       price: '₹6,500/night',
       capacity: '2 guests',
       rating: 4.8,
@@ -164,7 +164,31 @@ export default function Farmhouse() {
             </p>
             <div className="inline-flex items-center gap-2 rounded-full bg-emerald-900 px-8 py-3 font-semibold text-stone-50">
               <Star className="h-5 w-5 text-orange-400" />
-              Accepting Bookings Later This Year
+              Project Currently in Development
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Investors & Partners Section */}
+      <section className="bg-emerald-950 px-4 py-20 sm:px-6 lg:px-8 text-stone-50">
+        <div className="mx-auto max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="mb-6 font-serif text-4xl font-bold text-orange-400">Partner With Us</h2>
+            <p className="mb-8 text-lg text-emerald-100 leading-relaxed">
+              We are actively seeking visionary investors and strategic partners to join us in bringing the Rewind Nature Farmhouse project to life. This is a unique opportunity to collaborate on a sustainable, eco-friendly luxury retreat in the beautiful Gir region.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a href="/contact" className="inline-flex items-center justify-center rounded-full bg-orange-500 px-8 py-3.5 font-semibold text-white shadow-lg transition-all hover:scale-105 hover:bg-orange-600">
+                Contact for Partnership
+              </a>
+              <a href="/schedule" className="inline-flex items-center justify-center rounded-full border-2 border-emerald-700 bg-emerald-800/50 px-8 py-3.5 font-semibold text-white backdrop-blur-sm transition-all hover:scale-105 hover:bg-emerald-800">
+                Schedule a Meeting
+              </a>
             </div>
           </motion.div>
         </div>

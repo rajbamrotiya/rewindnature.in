@@ -37,7 +37,7 @@ class ContactMessageController extends Controller
 
         $message = ContactMessage::create($validated);
 
-        WhatsAppNotificationService::send($message);
+        // WhatsAppNotificationService::send($message);
 
         Mail::to('rajbamrotiya@yahoo.com')->send(new ContactMessageMail($message));
 
